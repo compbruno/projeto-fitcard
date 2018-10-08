@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <base href="<?php echo APP_ROOT; ?>">
+    <title><?php echo $this->title; ?></title>
+    <link rel="shortcut icon" type="image/png" href="content/portal/imgs/favicon.png">
+    <link href="content\assets\bootstrap\css\bootstrap.min.css" type="text/css" rel="stylesheet">
+    <link href="content/portal/css/style.css" type="text/css" rel="stylesheet">
+    <link href="content/assets/fontawesome/css/all.min.css" type="text/css" rel="stylesheet">
+</head>
+
+<body>
+    <div class="container">
+    <nav class="navbar navbar-expand-lg navbar-light bg-fitcard">
+      <a class="navbar-brand" href="portal"><img src="content/portal/imgs/fitcard-logo.png" alt="Fitcard Logo" width="121" height="30"></a>
+      <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav mr-auto">
+          <li class="nav-item">
+            <a class="nav-link" href="portal/estabelecimento/">Estabelecimentos <span class="sr-only">(current)</span></a>
+          </li>
+        </ul>
+        <form class="form-inline my-2 my-lg-0" action="portal/sessao/logout" method="post">
+          <button class="btn btn-outline-danger btn-sair my-2 my-sm-0" type="submit"><i class="fas fa-sign-out-alt btn-icon"></i>Sair</button>
+        </form>
+      </div>
+    </nav>
+        <?php $this->render(); ?>
+    </div>
+    <script src="content\assets\jquery-3.3.1.min.js"></script>
+    <script src="content\assets\bootstrap\js\bootstrap.min.js"></script>
+    <script src="content/assets/vanilla-masker/vanilla-masker.min.js"></script>
+    <script>
+      function inputHandler(masks, max, event) {
+          var c = event.target
+          var v = c.value.replace(/\D/g, '')
+          var m = c.value.length > max ? 1 : 0
+          VMasker(c).unMask()
+          VMasker(c).maskPattern(masks[m])
+          c.value = VMasker.toPattern(v, masks[m])
+      }
+
+      if(document.getElementById("ddd")) {
+        var dddMask = ['(99)', '(99)']
+        var ddd = document.querySelector('#ddd')
+        VMasker(ddd).maskPattern(dddMask[0])
+        ddd.addEventListener('input', inputHandler.bind(undefined, dddMask, 4), false)
+
+        var telMask = ['9999-99999', '99999-9999']
+        var tel = document.querySelector('#numTelefone')
+        VMasker(tel).maskPattern(telMask[0])
+        tel.addEventListener('input', inputHandler.bind(undefined, telMask, 10), false)
+
+        var cnpjMask = ['99.999.999/9999-99', '99.999.999/9999-99']
+        var cnpj = document.querySelector('#cnpj')
+        VMasker(cnpj).maskPattern(cnpjMask[0])
+        cnpj.addEventListener('input', inputHandler.bind(undefined, cnpjMask, 10), false)
+
+        var contaMask = ['999-9', '999-9']
+        var conta = document.querySelector('#conta')
+        VMasker(conta).maskPattern(contaMask[0])
+        conta.addEventListener('input', inputHandler.bind(undefined, contaMask, 10), false)
+
+        var agenciaMask = ['99.999-9', '99.999-9']
+        var agencia = document.querySelector('#agencia')
+        VMasker(agencia).maskPattern(agenciaMask[0])
+        agencia.addEventListener('input', inputHandler.bind(undefined, agenciaMask, 10), false)
+      }
+    </script>
+  <body>
+
+</html>

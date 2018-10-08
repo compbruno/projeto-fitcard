@@ -1,0 +1,35 @@
+<a href="/portal/estabelecimento/formEditar" class="btn btn-sm btn-outline-info float-right btn-novo-estabelecimento"><i class="fas fa-plus btn-icon"></i>Novo estabelecimento</a>
+<table class="table table-hover table-sm">
+    <thead>
+        <tr>
+            <th>#</th>
+            <th>Razão Social</th>
+            <th>Nome Fantasia</th>
+            <th>CNPJ</th>
+            <th>Email</th>
+            <th>Categoria</th>
+            <th>Status</th>
+            <th>Data de cadastro</th>
+            <th>Editar</th>
+        </tr>
+    </thead>
+    <tbody>
+    <?php if (count($view_list) > 0):?>
+        <?php foreach ($view_list as $li): ?>
+            <tr>
+                <td><?php echo $li->IDESTABELECIMENTO; ?></td>
+                <td><?php echo $li->RAZAO_SOCIAL; ?></td>
+                <td><?php echo $li->NOME_FANTASIA; ?></td>
+                <td><?php echo $li->CNPJ; ?></td>
+                <td><?php echo $li->EMAIL; ?></td>
+                <td><?php echo $li->CATEGORIA; ?></td>
+                <td><?php echo $li->STATUS; ?></td>
+                <td><?php echo $li->DATA_CADASTRO; ?></td>
+                <td><a href="/portal/estabelecimento/formEditar/<?php echo $li->IDESTABELECIMENTO; ?>" class="btn btn-sm btn-outline-dark"><i class="fas fa-edit"></i></a></td>
+            </tr>
+        <?php endforeach; ?>    
+    <?php endif; ?>
+    </tbody>
+    <tfoot>
+    </tfoot>
+</table>

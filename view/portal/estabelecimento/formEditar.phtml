@@ -1,0 +1,213 @@
+<form action="portal/estabelecimento/save" method="POST">
+    
+    <div class="form-group">
+        <label>ID do Estabelecimento</label>
+        <input type="text" class="form-control" disabled name="idestabelecimento" value="<?php echo $view_dados->idestabelecimento; ?>">
+    </div>
+
+    <div class="form-group">
+        <label>Categoria</label>
+        <select class="form-control" name="categoria" value="<?php echo $view_dados->categoria; ?>">
+            <option value="B">Borracharia</option>
+            <option value="O">Oficina</option>
+            <option value="O">Posto</option>
+            <option value="R">Restaurante</option>
+            <option value="S">Supermercado</option>
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label>Razão Social</label>
+        <input type="text" class="form-control" name="razao_social" value="<?php echo $view_dados->razao_social; ?>">
+    </div>
+    
+    <div class="form-group">
+        <label>CNPJ</label>
+        <input type="text" class="form-control" onchange="validarCNPJ(this.value)" id="cnpj" name="cnpj" value="<?php echo $view_dados->cnpj; ?>">
+    </div>
+
+    <div class="form-group">
+        <label>Nome Fantasia</label>
+        <input type="text" class="form-control" name="nome_fantasia" value="<?php echo $view_dados->nome_fantasia; ?>">
+    </div>
+    
+    <div class="form-group">
+        <label>Email</label>
+        <input type="text" class="form-control" id="email" onchange="validarEmail(this.value)" name="email" value="<?php echo $view_dados->email; ?>">
+    </div>
+
+    <div class="row">
+        <div class="col-sm-3">
+            <label>DDD</label>
+            <input type="text" class="form-control" id="ddd" name="ddd" value="<?php echo $view_dados->ddd; ?>">
+        </div>
+
+        <div class="col-sm-9">
+            <label>TELEFONE</label>
+            <input type="text" class="form-control" id="numTelefone" name="num" value="<?php echo $view_dados->num; ?>">
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-6">
+                <label>AGÊNCIA</label>
+                <input type="text" class="form-control" id="agencia" name="agencia" value="<?php echo $view_dados->agencia; ?>">
+            </div>
+
+            <div class="col-sm-6">
+                <label>CONTA</label>
+                <input type="text" class="form-control" id="conta" name="conta" value="<?php echo $view_dados->conta; ?>">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-6">
+                <label>RUA</label>
+                <input type="text" class="form-control" name="rua" value="<?php echo $view_dados->rua; ?>">
+            </div>
+
+            <div class="col-sm-1">
+                <label>NUM</label>
+                <input type="text" class="form-control" name="num" value="<?php echo $view_dados->num; ?>">
+            </div>
+
+            <div class="col-sm-5">
+                <label>BAIRRO</label>
+                <input type="text" class="form-control" name="bairro" value="<?php echo $view_dados->bairro; ?>">
+            </div>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <div class="row">
+            <div class="col-sm-6">
+                <label>CIDADE</label>
+                <input type="text" class="form-control" name="cidade" value="<?php echo $view_dados->cidade; ?>">
+            </div>
+            <div class="col-sm-6">
+                <label>ESTADO</label>
+                <select class="form-control" name="estado" value="<?php echo $view_dados->estado; ?>">
+                    <option value="AC">AC</option>
+                    <option value="AL">AL</option>
+                    <option value="AM">AM</option>
+                    <option value="AP">AP</option>
+                    <option value="BA">BA</option>
+                    <option value="CE">CE</option>
+                    <option value="DF">DF</option>
+                    <option value="ES">ES</option>
+                    <option value="GO">GO</option>
+                    <option value="MA">MA</option>
+                    <option value="MT">MT</option>
+                    <option value="MS">MS</option>
+                    <option value="MG">MG</option>
+                    <option value="PA">PA</option>
+                    <option value="PB">PB</option>
+                    <option value="PR">PR</option>
+                    <option value="PE">PE</option>
+                    <option value="PI">PI</option>
+                    <option value="RJ">RJ</option>
+                    <option value="RN">RN</option>
+                    <option value="RS">RS</option>
+                    <option value="RO">RO</option>
+                    <option value="RR">RR</option>
+                    <option value="SC">SC</option>
+                    <option value="SP">SP</option>
+                    <option value="SE">SE</option>
+                    <option value="TO">TO</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    
+    <div class="form-check form-check-inline">
+        <input class="form-check-input" type="radio" name="status" id="status1" value="<?php echo $view_dados->status; ?>" checked>
+        <label class="form-check-label" for="status1">
+            Ativo
+        </label>
+    </div>
+
+    <div class="form-group">
+        <div class="form-check form-check-inline">
+            <input class="form-check-input" type="radio" name="status" id="status2" value="<?php echo $view_dados->status; ?>">
+            <label class="form-check-label" for="status2">
+                Inativo
+            </label>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <a href="portal/estabelecimento" class="btn btn-outline-info"><i class="far fa-arrow-alt-circle-left btn-icon"></i>Voltar</a>
+        <div class="float-right">
+            <a href="portal/estabelecimento/delete/<?php echo $view_dados->idestabelecimento; ?>" class="btn btn-outline-danger"><i class="far fa-trash-alt btn-icon"></i>Deletar</a>
+            <button class="btn btn-outline-success" type="submit"><i class="far fa-save btn-icon"></i>Salvar</button>
+        </div>
+        
+    </div>
+</form>
+
+<script>
+    function validarEmail(email) {
+        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+        if (re.test(String(email).toLowerCase())) {
+            document.getElementById("email").style.borderColor = "#0f0"
+        } else {
+            alert("Email inválido")
+            document.getElementById("email").style.borderColor = "#f00"
+        }
+    }
+
+    function validarCNPJ(cnpj) {
+        document.getElementById("cnpj").style.borderColor = "#f00"
+        cnpj = cnpj.replace(/[^\d]+/g,'')
+        if(cnpj == '') {
+            return false
+        }
+        if (cnpj.length != 14) {
+            alert("CNPJ Inválido")
+            return false
+        }
+        // Elimina CNPJs invalidos conhecidos
+        if (cnpj == "00000000000000" || cnpj == "11111111111111" || cnpj == "22222222222222" || cnpj == "33333333333333" || cnpj == "44444444444444" || cnpj == "55555555555555" || cnpj == "66666666666666" || cnpj == "77777777777777" || cnpj == "88888888888888" || cnpj == "99999999999999") {
+            alert("CNPJ Inválido")
+            return false
+        }
+        // Valida DVs
+        tamanho = cnpj.length - 2
+        numeros = cnpj.substring(0,tamanho);
+        digitos = cnpj.substring(tamanho);
+        soma = 0;
+        pos = tamanho - 7;
+        for (i = tamanho; i >= 1; i--) {
+        soma += numeros.charAt(tamanho - i) * pos--;
+        if (pos < 2)
+                pos = 9;
+        }
+        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+        if (resultado != digitos.charAt(0)) {
+            alert("CNPJ Inválido")
+            return false
+        }
+        tamanho = tamanho + 1
+        numeros = cnpj.substring(0,tamanho)
+        soma = 0
+        pos = tamanho - 7
+        for (i = tamanho; i >= 1; i--) {
+            soma += numeros.charAt(tamanho - i) * pos--;
+            if (pos < 2) {
+                pos = 9
+            }
+        }
+        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
+        if (resultado != digitos.charAt(1)) {
+            alert("CNPJ Inválido")
+            return false
+        }
+        document.getElementById("cnpj").style.borderColor = "#0f0"
+        return true
+    }
+</script>
+
+

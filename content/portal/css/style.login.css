@@ -1,0 +1,39 @@
+body {
+    background: #fff;
+}
+
+.wrapper {
+    display: table;
+    height: 100%;
+    position: absolute;
+    overflow: hidden;
+    width: 100%;
+}
+
+.middle {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+form {
+    position: relative;
+    width: 380px;
+    margin: auto;
+    background: #ddd;
+    padding: 15px;
+}
+
+.btn-login {
+    margin-left: 270px;
+    background-color: #ac1f2d;
+    border-color: #ac1f2d;
+}
+
+.btn-login:hover {
+    background-color: #7f111d;
+    border-color: #7f111d;
+}
+
+.icon-btn {
+    margin-right: 10px;
+}
