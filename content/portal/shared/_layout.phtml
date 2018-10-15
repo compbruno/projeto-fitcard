@@ -34,43 +34,18 @@
     <script src="content\assets\jquery-3.3.1.min.js"></script>
     <script src="content\assets\bootstrap\js\bootstrap.min.js"></script>
     <script src="content/assets/vanilla-masker/vanilla-masker.min.js"></script>
-    <script>
-      function inputHandler(masks, max, event) {
-          var c = event.target
-          var v = c.value.replace(/\D/g, '')
-          var m = c.value.length > max ? 1 : 0
-          VMasker(c).unMask()
-          VMasker(c).maskPattern(masks[m])
-          c.value = VMasker.toPattern(v, masks[m])
-      }
+    <script src="content\portal\notify.min.js"></script>
+    <?php if ($view_salvo == "true"): ?>
+      <script>
+        $.notify("Estabelecimento salvo com sucesso!", "success");
+      </script>
+    <?php elseif ($view_removido == "true"): ?>
+      <script>
+        $.notify("Estabelecimento removido com sucesso!", "success");
+      </script>
+    <?php else: ?>
 
-      if(document.getElementById("ddd")) {
-        var dddMask = ['(99)', '(99)']
-        var ddd = document.querySelector('#ddd')
-        VMasker(ddd).maskPattern(dddMask[0])
-        ddd.addEventListener('input', inputHandler.bind(undefined, dddMask, 4), false)
-
-        var telMask = ['9999-99999', '99999-9999']
-        var tel = document.querySelector('#numTelefone')
-        VMasker(tel).maskPattern(telMask[0])
-        tel.addEventListener('input', inputHandler.bind(undefined, telMask, 10), false)
-
-        var cnpjMask = ['99.999.999/9999-99', '99.999.999/9999-99']
-        var cnpj = document.querySelector('#cnpj')
-        VMasker(cnpj).maskPattern(cnpjMask[0])
-        cnpj.addEventListener('input', inputHandler.bind(undefined, cnpjMask, 10), false)
-
-        var contaMask = ['999-9', '999-9']
-        var conta = document.querySelector('#conta')
-        VMasker(conta).maskPattern(contaMask[0])
-        conta.addEventListener('input', inputHandler.bind(undefined, contaMask, 10), false)
-
-        var agenciaMask = ['99.999-9', '99.999-9']
-        var agencia = document.querySelector('#agencia')
-        VMasker(agencia).maskPattern(agenciaMask[0])
-        agencia.addEventListener('input', inputHandler.bind(undefined, agenciaMask, 10), false)
-      }
-    </script>
-  <body>
+    <?php endif; ?>
+  </body>
 
 </html>

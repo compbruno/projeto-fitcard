@@ -9,7 +9,8 @@ class Estabelecimento extends Objeto {
     public $razao_social;
     public $cnpj;
     public $nome_fantasia;
-    //public $telefone;
+    public $ddd;
+    public $numero;
     public $email;
     public $categoria;
     public $status;

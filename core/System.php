@@ -108,4 +108,6 @@ class System extends Router {
         $act = $this->action;
         $this->init->$act();
     }
+
+
 }

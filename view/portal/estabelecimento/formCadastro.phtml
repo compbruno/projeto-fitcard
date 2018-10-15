@@ -1,8 +1,8 @@
-<form action="portal/estabelecimento/save" method="POST">
+<form action="portal/estabelecimento/save" id="formEstabelecimento" onsubmit="return validarForm()" name="form_estabelecimento" method="POST">
     
     <div class="form-group">
         <label>Categoria</label>
-        <select class="form-control" name="categoria" value="<?php echo $view_dados->categoria; ?>">
+        <select class="form-control" name="categoria" onchange="verificaCategoria(this.value)">
             <option value="B">Borracharia</option>
             <option value="O">Oficina</option>
             <option value="O">Posto</option>
@@ -13,33 +13,33 @@
 
     <div class="form-group">
         <label>Razão Social</label>
-        <input type="text" class="form-control" name="razao_social" value="<?php echo $view_dados->razao_social; ?>">
+        <input type="text" class="form-control" name="razao_social" id="razaoSocial" required>
     </div>
     
     <div class="form-group">
         <label>CNPJ</label>
-        <input type="text" class="form-control" onchange="validarCNPJ(this.value)" id="cnpj" name="cnpj" value="<?php echo $view_dados->cnpj; ?>">
+        <input type="text" class="form-control" required onchange="validarCNPJ(this.value)" id="cnpj" name="cnpj">
     </div>
 
     <div class="form-group">
         <label>Nome Fantasia</label>
-        <input type="text" class="form-control" name="nome_fantasia" value="<?php echo $view_dados->nome_fantasia; ?>">
+        <input type="text" class="form-control" name="nome_fantasia">
     </div>
     
     <div class="form-group">
         <label>Email</label>
-        <input type="text" class="form-control" id="email" onchange="validarEmail(this.value)" name="email" value="<?php echo $view_dados->email; ?>">
+        <input type="text" class="form-control" id="email" onchange="validarEmail(this.value)" name="email">
     </div>
 
     <div class="row">
         <div class="col-sm-3">
             <label>DDD</label>
-            <input type="text" class="form-control" id="ddd" name="ddd" value="<?php echo $view_dados->ddd; ?>">
+            <input type="text" class="form-control" id="ddd" name="ddd">
         </div>
 
         <div class="col-sm-9">
             <label>TELEFONE</label>
-            <input type="text" class="form-control" id="numTelefone" name="num" value="<?php echo $view_dados->num; ?>">
+            <input type="text" class="form-control" id="numTelefone" name="numero">
         </div>
     </div>
 
@@ -47,12 +47,12 @@
         <div class="row">
             <div class="col-sm-6">
                 <label>AGÊNCIA</label>
-                <input type="text" class="form-control" id="agencia" name="agencia" value="<?php echo $view_dados->agencia; ?>">
+                <input type="text" class="form-control" id="agencia" name="agencia">
             </div>
 
             <div class="col-sm-6">
                 <label>CONTA</label>
-                <input type="text" class="form-control" id="conta" name="conta" value="<?php echo $view_dados->conta; ?>">
+                <input type="text" class="form-control" id="conta" name="conta">
             </div>
         </div>
     </div>
@@ -61,17 +61,17 @@
         <div class="row">
             <div class="col-sm-6">
                 <label>RUA</label>
-                <input type="text" class="form-control" name="rua" value="<?php echo $view_dados->rua; ?>">
+                <input type="text" class="form-control" name="rua">
             </div>
 
             <div class="col-sm-1">
                 <label>NUM</label>
-                <input type="text" class="form-control" name="num" value="<?php echo $view_dados->num; ?>">
+                <input type="text" class="form-control" name="num">
             </div>
 
             <div class="col-sm-5">
                 <label>BAIRRO</label>
-                <input type="text" class="form-control" name="bairro" value="<?php echo $view_dados->bairro; ?>">
+                <input type="text" class="form-control" name="bairro">
             </div>
         </div>
     </div>
@@ -80,11 +80,11 @@
         <div class="row">
             <div class="col-sm-6">
                 <label>CIDADE</label>
-                <input type="text" class="form-control" name="cidade" value="<?php echo $view_dados->cidade; ?>">
+                <input type="text" class="form-control" name="cidade">
             </div>
             <div class="col-sm-6">
                 <label>ESTADO</label>
-                <select class="form-control" name="estado" value="<?php echo $view_dados->estado; ?>">
+                <select class="form-control" name="estado">
                     <option value="AC">AC</option>
                     <option value="AL">AL</option>
                     <option value="AM">AM</option>
@@ -141,67 +141,5 @@
         
     </div>
 </form>
-
-<script>
-    function validarEmail(email) {
-        var re = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-        if (re.test(String(email).toLowerCase())) {
-            document.getElementById("email").style.borderColor = "#0f0"
-        } else {
-            alert("Email inválido")
-            document.getElementById("email").style.borderColor = "#f00"
-        }
-    }
-
-    function validarCNPJ(cnpj) {
-        document.getElementById("cnpj").style.borderColor = "#f00"
-        cnpj = cnpj.replace(/[^\d]+/g,'')
-        if(cnpj == '') {
-            return false
-        }
-        if (cnpj.length != 14) {
-            alert("CNPJ Inválido")
-            return false
-        }
-        // Elimina CNPJs invalidos conhecidos
-        if (cnpj == "00000000000000" || cnpj == "11111111111111" || cnpj == "22222222222222" || cnpj == "33333333333333" || cnpj == "44444444444444" || cnpj == "55555555555555" || cnpj == "66666666666666" || cnpj == "77777777777777" || cnpj == "88888888888888" || cnpj == "99999999999999") {
-            alert("CNPJ Inválido")
-            return false
-        }
-        // Valida DVs
-        tamanho = cnpj.length - 2
-        numeros = cnpj.substring(0,tamanho);
-        digitos = cnpj.substring(tamanho);
-        soma = 0;
-        pos = tamanho - 7;
-        for (i = tamanho; i >= 1; i--) {
-        soma += numeros.charAt(tamanho - i) * pos--;
-        if (pos < 2)
-                pos = 9;
-        }
-        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-        if (resultado != digitos.charAt(0)) {
-            alert("CNPJ Inválido")
-            return false
-        }
-        tamanho = tamanho + 1
-        numeros = cnpj.substring(0,tamanho)
-        soma = 0
-        pos = tamanho - 7
-        for (i = tamanho; i >= 1; i--) {
-            soma += numeros.charAt(tamanho - i) * pos--;
-            if (pos < 2) {
-                pos = 9
-            }
-        }
-        resultado = soma % 11 < 2 ? 0 : 11 - soma % 11;
-        if (resultado != digitos.charAt(1)) {
-            alert("CNPJ Inválido")
-            return false
-        }
-        document.getElementById("cnpj").style.borderColor = "#0f0"
-        return true
-    }
-</script>
 
 

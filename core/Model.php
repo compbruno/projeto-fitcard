@@ -31,7 +31,7 @@ class Model extends Config {
 
     public function Insert($obj, $table) {
         try {
-            $sql = "INSERT INTO {$table} (".implode(",", array_keys((array)$obj)).") VALUES ('".implode("','", array_values((array)$obj))."')";
+            $sql = "INSERT INTO {$table} (".implode(",", array_keys((array)$obj)).") VALUES (".implode(",", array_values((array)$obj)).")";
             $state = $this->con->prepare($sql);
             $state->execute(array('widgets'));
         } catch (\PDOException $e) {
@@ -43,11 +43,11 @@ class Model extends Config {
     public function Update($obj, $condition, $table) {
         try {
             foreach ($obj as $key => $value) {
-                $dados[] = "`{$key}` = " .(is_null($value) ? " NULL " : "'{$value}'");
+                $dados[] = "`{$key}` = " .(is_null($value) ? " NULL " : "{$value}");
             }
 
             foreach ($condition as $key => $value) {
-                $where[] = "`{$key}` " .(is_null($value) ? " IS NULL " : " = '{$value}'");
+                $where[] = "`{$key}` " .(is_null($value) ? " IS NULL " : " = {$value}");
             }
 
             $sql = "UPDATE {$table} SET " . implode(',', $dados) . " WHERE " . implode(' AND ', $where);
@@ -56,12 +56,13 @@ class Model extends Config {
         } catch (\PDOException $e) {
             die ($e->getMessage() . " " . $sql);
         }
+        return array('success' => true, 'feedback' => '');
     }
 
     public function Delete($condition, $table) {
         try {
             foreach ($condition as $key => $value) {
-                $where = "$key = '{$value}'";
+                $where = "$key =  {$value}";
             }
             $sql = "DELETE FROM $table WHERE $where";
             $state = $this->con->prepare($sql);

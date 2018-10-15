@@ -26,3 +26,8 @@ spl_autoload_register(function ($class) { // Padrão PSR-4
         require_once $file;
     }
 });
+
+function formatarData($data_antiga) {
+    $date = DateTime::createFromFormat('Y-m-d', $data_antiga);
+    return $date->format('d/m/Y');
+}

@@ -1,0 +1,6 @@
+<?xml version="1.0" ?>
+<dataset>
+    <estabelecimento razao_social="Teste LTDA" cnpj="81.425.869/0001-80" nome_fantasia="teste" email="comp.brunomoreira@gmail.com" agencia="650-x" conta="38.388.8" categoria="S" status="I" data_cadastro="2018-10-14"/>
+    <estabelecimento razao_social="Razao Social LTDA" cnpj="69.372.864/0001-30" />
+    <telefone ddd="(19)" numero="3365-3365" id_estabelecimento="1"/>
+</dataset>
