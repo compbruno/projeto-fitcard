@@ -1,4 +1,4 @@
-# projeto-fitcard
+# Projeto Fitcard
 
 Para acessar o portal é necessário utilizar os dados:
   - Usuário: admin
