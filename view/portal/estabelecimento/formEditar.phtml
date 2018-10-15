@@ -121,7 +121,7 @@
             </div>
             <div class ="col-sm-3">
                 <label>DATA DE CADASTRO</label>
-                <input type="text" class="form-control" name="data_cadastro" value="<?php echo formatarData($view_dados->data_cadastro); ?>" readonly>
+                <input type="text" class="form-control" name="data_cadastro" value="<?php echo ($view_dados->data_cadastro) != "" ? formatarData($view_dados->data_cadastro) : ""; ?>" readonly>
             </div>
         </div>
     </div>

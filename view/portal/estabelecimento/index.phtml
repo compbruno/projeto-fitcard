@@ -24,7 +24,7 @@
                 <td><?php echo $li->EMAIL; ?></td>
                 <td><?php echo $li->CATEGORIA; ?></td>
                 <td><?php echo $li->STATUS; ?></td>
-                <td><?php echo formatarData($li->DATA_CADASTRO); ?></td>
+                <td><?php echo ($li->DATA_CADASTRO) != "" ? formatarData($li->DATA_CADASTRO) : ""; ?></td>
                 <td><a href="/portal/estabelecimento/formEditar/<?php echo $li->IDESTABELECIMENTO; ?>" class="btn btn-sm btn-outline-dark"><i class="fas fa-edit"></i></a></td>
             </tr>
         <?php endforeach; ?>    
